@@ -54,7 +54,7 @@ SELECT
     codespace,
     COALESCE(
         fee,
-        '0uevmos'
+        '0aevmos'
     ) AS fee,
     gas_used,
     gas_wanted,
