@@ -4,6 +4,7 @@
     cluster_by = ['_inserted_timestamp::date'],
     merge_update_columns = ["block_id"],
 ) }}
+
 WITH meta AS (
 
     SELECT
@@ -35,6 +36,7 @@ WHERE
 {% else %}
 )
 {% endif %}
+
 SELECT
     VALUE,
     _partition_by_block_id,
@@ -42,7 +44,7 @@ SELECT
     metadata,
     DATA,
     TO_TIMESTAMP(
-        m._inserted_timestamp
+        _inserted_timestamp
     ) AS _inserted_timestamp
 FROM
     {{ source(
@@ -51,6 +53,7 @@ FROM
     ) }} 
     JOIN meta m
     ON m.file_name = metadata$filename
+    {{ ref('bronze__streamline_FR_tendermint_blocks') }}
 
 WHERE
     DATA: error IS NULL qualify(ROW_NUMBER() over (PARTITION BY block_number
