@@ -2,12 +2,11 @@ version: 2
 
 sources:
   - name: crosschain
-    database: "{{ 'crosschain' if target.database == 'evmos' else 'crosschain_dev' }}"
+    database: "{{ 'crosschain' if target.database == 'EVMOS' else 'crosschain_dev' }}"
     schema: core
     tables:
       - name: dim_date_hours
-      - name: address_tags
-      - name: address_labels
+      - name: dim_address_labels
       - name: dim_dates
   - name: bronze_streamline
     database: streamline

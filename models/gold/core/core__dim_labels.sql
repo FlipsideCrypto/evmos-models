@@ -14,12 +14,11 @@ SELECT
 FROM
     {{ source(
         'crosschain',
-        'address_labels'
+        'dim_address_labels'
     ) }}
 WHERE
     blockchain = 'evmos'
-
-UNION 
+UNION
 SELECT
     blockchain,
     creator,
@@ -33,7 +32,7 @@ FROM
     {{ ref('core__dim_tokens') }}
 WHERE
     blockchain = 'evmos'
-UNION 
+UNION
 SELECT
     blockchain,
     creator,
@@ -46,4 +45,4 @@ SELECT
 FROM
     {{ ref('core__fact_validators') }}
 WHERE
-    blockchain = 'evmos' 
+    blockchain = 'evmos'
