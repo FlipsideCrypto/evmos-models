@@ -8,9 +8,8 @@ SELECT
     address,
     label_type,
     label_subtype,
-    project_name AS label,
-    address_name AS address_name,
-    NULL AS raw_metadata
+    project_name,
+    address_name
 FROM
     {{ source(
         'crosschain',
