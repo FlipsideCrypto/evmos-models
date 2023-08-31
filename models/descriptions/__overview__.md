@@ -18,16 +18,23 @@ There is more information on how to use dbt docs in the last section of this doc
 **Click on the links below to jump to the documentation for each schema.**
 
 ### Core Tables (`evmos`.`CORE`.`<table_name>`)
-
-**Dimension Tables:**
-
-
-**Fact Tables:**
+### Governance Tables (`evmos`.`GOV`.`<table_name>`)
+### DeFi Tables (`evmos`.`DEFI`.`<table_name>`)
 
 
+**Core Dimension Tables:**
+- [dim_labels](#!/model/model.evmos.core__dim_labels)
+- [dim_tokens](#!/model/model.evmos.core__dim_tokens)
 
-**Convenience Tables:**
+**Core Fact Tables:**
+- [fact_blocks](#!/model/model.evmos.core__fact_blocks)
+- [fact_msg_attributes](#!/model/model.evmos.core__fact_msg_attributes)
+- [fact_msgs](#!/model/model.evmos.core__fact_msgs)
+- [fact_transactions](#!/model/model.evmos.core__fact_transactions)
+- [fact_transfers](#!/model/model.evmos.core__fact_transfers)
 
+**Governance Fact Tables:**
+- [fact_validators](#!/model/model.evmos.gov__fact_validators)
 
 
 
@@ -37,7 +44,7 @@ The evmos models are built a few different ways, but the core fact tables are bu
 
 - Bronze: Data is loaded in from the source as a view
 - Silver: All necessary parsing, filtering, de-duping, and other transformations are done here
-- Gold (or core): Final views and tables that are available publicly
+- Gold (core/gov): Final views and tables that are available publicly
 
 The dimension tables are sourced from a variety of on-chain and off-chain sources.
 
@@ -65,7 +72,7 @@ Note that you can also right-click on models to interactively filter and explore
 
 ### **More information**
 - [Flipside](https://flipsidecrypto.xyz/)
-- [Velocity](https://app.flipsidecrypto.com/velocity?nav=Discover)
+- [Data Studio](https://flipsidecrypto.xyz/edit)
 - [Tutorials](https://docs.flipsidecrypto.com/our-data/tutorials)
 - [Github](https://github.com/FlipsideCrypto/evmos-models)
 - [What is dbt?](https://docs.getdbt.com/docs/introduction)
