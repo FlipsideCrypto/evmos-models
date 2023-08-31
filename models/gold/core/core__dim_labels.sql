@@ -12,12 +12,9 @@ SELECT
     address_name AS address_name,
     NULL AS raw_metadata
 FROM
-    {{ source(
-        'crosschain',
-        'dim_address_labels'
+    {{ ref(
+        'silver__labels'
     ) }}
-WHERE
-    blockchain = 'evmos'
 UNION
 SELECT
     blockchain,

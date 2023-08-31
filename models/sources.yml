@@ -6,7 +6,7 @@ sources:
     schema: core
     tables:
       - name: dim_date_hours
-      - name: dim_address_labels
+      - name: dim_labels
       - name: dim_dates
   - name: bronze_streamline
     database: streamline
