@@ -41,12 +41,14 @@ models:
 
 vars:
   "dbt_date:time_zone": GMT
-  STREAMLINE_INVOKE_STREAMS: False
+  STREAMLINE_INVOKE_STREAMS: FALSE
   STREAMLINE_USE_DEV_FOR_EXTERNAL_TABLES: False
   UPDATE_UDFS_AND_SPS: False
-  STREAMLINE_RUN_HISTORY: False
+  STREAMLINE_RUN_HISTORY: FALSE
   UPDATE_SNOWFLAKE_TAGS: True
   WAIT: 0
+  OBSERV_FULL_TEST: FALSE
+  STREAMLINE_RUN_HISTORY: FALSE
 
 tests:
   +store_failures: true # all tests
@@ -57,3 +59,14 @@ on-run-start:
 
 on-run-end:
   - '{{ apply_meta_as_tags(results) }}'
+
+dispatch:
+  - macro_namespace: dbt
+    search_order:
+      - osmosis-models
+      - dbt_snowflake_query_tags
+      - dbt
+
+query-comment:
+  comment: '{{ dbt_snowflake_query_tags.get_query_comment(node) }}'
+  append: true # Snowflake removes prefixed comments.
