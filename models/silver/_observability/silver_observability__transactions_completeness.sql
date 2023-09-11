@@ -58,7 +58,13 @@ bronze AS (
             t.value :hash
         ) :: STRING AS tx_id
     FROM
-        {{ ref('bronze__streamline_FR_tendermint_transactions') }} A
+        {% if var('OBSERV_FULL_TEST') %}
+            {{ ref('bronze__streamline_FR_tendermint_transactions') }}
+        {% else %}
+            {{ ref('bronze__streamline_tendermint_transactions') }}
+        {% endif %}
+
+        A
         JOIN rel_blocks b
         ON A.block_number = b.block_id
         JOIN TABLE(FLATTEN(DATA :result :txs)) t {# {% if is_incremental() %}
