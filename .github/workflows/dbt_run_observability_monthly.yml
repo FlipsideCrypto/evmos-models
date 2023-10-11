@@ -3,9 +3,9 @@ run-name: dbt_run_observability_monthly
 
 on:
   workflow_dispatch:
-  schedule:
-  # “At 01:45 on day-of-month 1.”
-    - cron: '45 3 1 * *'
+  # schedule:
+  # # “At 01:45 on day-of-month 1.”
+  #   - cron: '45 3 1 * *'
 
 env:
   USE_VARS: "${{ vars.USE_VARS }}"

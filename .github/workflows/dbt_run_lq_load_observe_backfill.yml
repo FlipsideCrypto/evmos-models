@@ -3,9 +3,9 @@ run-name: dbt_run_scheduled_lq_load_mainnet
 
 on:
   workflow_dispatch:
-  schedule:
-    # Every 30
-    - cron: '20,50 * * * *'
+  # schedule:
+  #   # Every 30
+  #   - cron: '20,50 * * * *'
 
 env:
   USE_VARS: "${{ vars.USE_VARS }}"
